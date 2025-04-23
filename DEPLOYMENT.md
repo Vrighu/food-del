@@ -88,6 +88,29 @@ If you prefer using Vercel instead of Netlify:
 3. **Configure environment variables**
    - Add the same environment variables as mentioned for Netlify
 
+## Admin Panel Deployment
+
+If your application includes an admin panel, you'll need to deploy it separately:
+
+1. **Deploy the admin panel on Netlify or Vercel**
+   - Follow the same steps as the frontend deployment
+   - For Netlify:
+     - Base directory: `admin` (if your repository contains frontend, backend, and admin)
+     - Build Command: `npm run build`
+     - Publish Directory: `dist` (for Vite projects)
+
+2. **Configure environment variables**
+   - Add the following environment variables:
+     ```
+     VITE_API_URL=your_backend_url (e.g., https://food-delivery-backend.onrender.com)
+     ```
+
+## Additional Configuration Notes
+
+- The backend's `orderController.js` uses the frontend URL for redirects after payment processing. Make sure the `FRONTEND_URL` environment variable is set correctly in your backend deployment.
+
+- Ensure that all three components (frontend, backend, and admin panel) have their environment variables configured correctly to communicate with each other.
+
 ## Notes and Limitations
 
 - **Free Tier Limitations**:
